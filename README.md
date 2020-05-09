@@ -1,0 +1,2 @@
+# QtGuiApplication
+qt gui
