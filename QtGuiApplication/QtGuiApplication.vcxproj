@@ -43,7 +43,7 @@
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QtInstall>Qt513Msvc32</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;webenginewidgets;widgets</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtInstall>Qt513Msvc32</QtInstall>
