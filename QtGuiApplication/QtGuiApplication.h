@@ -15,6 +15,7 @@
 #include <QDockWidget>
 
 #include "ui_QtGuiApplication.h"
+#include "Live.h"
 
 #if 0
 class CSeatListModel : public QAbstractListModel
@@ -64,6 +65,7 @@ public:
 	static QString MimeType() { return QStringLiteral("image/seat-piece"); }
 
 	void addPiece(const QString &strFile);
+	void *PieceWinId(const QString &strFile);
 
 	inline void ShowWidget(const QString &strFile)
 	{
@@ -192,4 +194,6 @@ private:
 
 	QWebEngineView *m_pWebEngineView;
 	QDockWidget *m_pDockWidgetWebEngineView;
+
+	CLive *m_pLive;
 };

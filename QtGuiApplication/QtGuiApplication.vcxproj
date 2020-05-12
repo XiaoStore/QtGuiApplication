@@ -59,11 +59,14 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>.\;D:\Agora;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\Agora\bin32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>agora_rtc_sdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,6 +83,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Agora\AgoraObject.cpp" />
+    <ClCompile Include="Agora\LiveAgora.cpp" />
+    <ClCompile Include="Live.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QtGuiApplication.cpp" />
   </ItemGroup>
@@ -91,6 +97,13 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QtGuiApplication.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Agora\AgoraObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Agora\LiveAgora.h" />
+    <ClInclude Include="Live.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

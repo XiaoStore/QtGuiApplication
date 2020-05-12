@@ -1,4 +1,5 @@
 #include "QtGuiApplication.h"
+#include "Agora/LiveAgora.h"
 
 #define C_MAIN_WINDOW_W		1280
 #define C_MAIN_WINDOW_H		720
@@ -30,6 +31,10 @@
 #define C_BOARD_M_W			(C_SEAT_M_W * 3)
 #define C_BOARD_M_H			(C_SEAT_M_H * 3)
 #define C_BOARD_M_B			C_SEAT_M_B
+
+
+#define	C_TEST_ID			"4240c2f3c0e5424bb7894342b6ca6e1e"
+#define	C_TEST_CHANNEL		"XiaoStore"
 
 #if 0
 
@@ -248,6 +253,17 @@ void CSeatWidget::addPiece(const QString &strFile)
 	m_mapStringWidgets[strFile] = pLabel;
 }
 
+void *CSeatWidget::PieceWinId(const QString &strFile)
+{
+	auto it = m_mapStringWidgets.find(strFile);
+	if (it == m_mapStringWidgets.end())
+	{
+		return NULL;
+	}
+
+	return (void *)it.value()->winId();
+}
+
 void CSeatWidget::mousePressEvent(QMouseEvent *event)
 {
 	QLabel *child = static_cast<QLabel*>(childAt(event->pos()));
@@ -444,4 +460,8 @@ QtGuiApplication::QtGuiApplication(QWidget *parent)
 	m_QWebEngineView = new QWebEngineView();
 	m_QWebEngineView->setUrl(QUrl("https://www.baidu.com"));
 	m_pQMdiArea->addSubWindow(m_QWebEngineView);
+
+	m_pLive = new CLiveAgora();
+	m_pLive->Init(C_TEST_ID);
+	m_pLive->Active(m_pSeat->PieceWinId("Resources/d1.png"), C_TEST_CHANNEL);
 }
